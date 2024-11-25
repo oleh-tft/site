@@ -81,6 +81,12 @@ p {
     z-index: 5000;
 }
 
+.stick {
+    position: sticky;
+    top: 0;
+    z-index: 5000;
+}
+
 .nav-menu {
     list-style: none;
     text-transform: uppercase;
@@ -89,6 +95,30 @@ p {
 #nav-menu a {
     color: rgb(49, 49, 49);
     padding: 8px;
+}
+
+.btn-outline-custom {
+    display: none;
+    --bs-btn-color: #eee8a9;
+    --bs-btn-border-color: #eee8a9;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #eee8a9;
+    --bs-btn-hover-border-color: #eee8a9;
+    --bs-btn-focus-shadow-rgb: 13,110,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #eee8a9;
+    --bs-btn-active-border-color: #eee8a9;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #eee8a9;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #eee8a9;
+    --bs-gradient: none;
+}
+
+@media screen and (max-width: 767px) {
+    .btn-outline-custom {
+        display: block;
+    }
 }
 
 .brand-img {
@@ -102,7 +132,6 @@ p {
 }
 
 .cbtn-signup {
-    padding: 2px;
     border-top-right-radius: 12px;
     border-bottom-left-radius: 12px;
     background-color: #1f6299;
@@ -169,6 +198,9 @@ p {
 .text-left {
     font-size: 16px;
 }
+.text-center {
+    text-align: center;
+}
 
 .nav a {
     color: #646464;
@@ -186,7 +218,6 @@ p {
 
 .section {
     background-color: #dbe9e7;
-    height: 300px;
 }
 
 .cont-pad {
