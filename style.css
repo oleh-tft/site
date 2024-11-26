@@ -13,6 +13,7 @@ body {
     background-color: #fafffd;
     font-family: "Roboto Flex", sans-serif;
     font-weight: 400;
+    color: rgb(49, 49, 49);
 }
 
 a {
@@ -28,9 +29,23 @@ h2 {
     font-size: 28px;
 }
 
+h4 {
+    font-weight: bold;
+    font-size: 60px;
+}
+
 p {
     color: #646464;
     font-size: 18px;
+}
+
+span {
+    color: #646464;
+    font-size: 18px;
+}
+
+textarea {
+    resize: none;
 }
 
 .colors {
@@ -228,4 +243,21 @@ p {
     width: 60vw;
     height: 500px;
     border: 2px solid purple;
+}
+
+.contact-bg {
+    background-color: #eee8a9;
+    padding: 8px 18px;
+    border-top-right-radius: 2vw;
+    border-bottom-left-radius: 2vw;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 3rem;
+}
+
+.py-c {
+    padding: 50px 0;
 }

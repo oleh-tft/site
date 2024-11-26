@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Ysabeau+SC:wght@1..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script> 
+        $(function(){
+          $("#header").load("header.html"); 
+          $("#footer").load("footer.html"); 
+        });
+    </script> 
+</head>
+<body>
+    <header id="header" class="stick"></header>
+
+    <main id="main-container" class="cont-pad">
+        <div class="container-fluid section justify-content-center d-flex mb-5 p-5">
+            <h4>Contact</h4>
+        </div>
+        <div class="mb-5">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-md-4 d-flex flex-column align-items-center pt-3">
+                        <div class="contact-bg">
+                            <h3>About</h3>
+                            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column align-items-center pt-3">
+                        <div class="contact-bg">
+                            <h3>Contact</h3>
+                            <span>
+                                0 800 000000
+                                <br>
+                                hom@proton.me
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex flex-column align-items-center pt-3">
+                        <div class="contact-bg">
+                            <h3>Address</h3>
+                            <span>
+                                123 Street
+                                <br>
+                                Odesa Ukraine
+                                <br>
+                                65000
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex flex-column mb-5">
+            <div class="row">
+                <div class="col-md-5" style="background-color: peachpuff;">
+                    map widget
+                </div>
+                <div class="col-md-7 d-flex flex-column p-5">
+                    <span>Contact us</span>
+                    <h4>Write a message</h4>
+                    <form>
+                        <div class="row">
+                            <div class="col-lg pb-3">
+                                <input type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="col-lg pb-3">
+                                <input type="email" class="form-control" placeholder="Email Address">
+                            </div>
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col">
+                                <textarea class="form-control" rows="5" placeholder="Write a Message"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2">Send a Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
