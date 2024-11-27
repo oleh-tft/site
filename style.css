@@ -130,7 +130,7 @@ textarea {
     --bs-gradient: none;
 }
 
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
     .btn-outline-custom {
         display: block;
     }
@@ -260,4 +260,29 @@ textarea {
 
 .py-c {
     padding: 50px 0;
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+@media (max-width: 767px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+@media (max-width: 991px) {
+    h1 {
+        font-size: 40px;
+    }
+    .content-img img {
+        width: 80%;
+        height: 80%;
+    }
+}
+@media (max-width: 1199px) {
+    h1 {
+        font-size: 40px;
+    }
 }
