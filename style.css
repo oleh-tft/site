@@ -138,6 +138,7 @@ textarea {
 .cbtn {
     text-transform: uppercase;
     color: white;
+    border: none;
 }
 
 .cbtn-signup {
@@ -204,9 +205,6 @@ textarea {
 #copyright p {
     margin-bottom: 0px;
 }
-.text-left {
-    font-size: 16px;
-}
 .text-center {
     text-align: center;
 }
@@ -257,6 +255,11 @@ textarea {
     border: none;
     background: none;
     color: #646464;
+    transition: all;
+}
+
+.list-group-item-action:hover {
+    font-weight: bold;
 }
 
 .list-title {
@@ -284,12 +287,13 @@ textarea {
     }
     p {
         font-size: 12px;
+        margin-bottom: 0.2rem;
     }
     .col-limit {
         max-width: 80%;
     }
     h4 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 @media (min-width: 391px) and (max-width: 575px) {
@@ -298,6 +302,7 @@ textarea {
     }
     p {
         font-size: 13px;
+        margin-bottom: 0.4rem;
     }
     .col-limit {
         max-width: 70%;
@@ -314,7 +319,7 @@ textarea {
         font-size: 14px;
     }
     h4 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
     }
 }
 @media (min-width: 768px) and (max-width: 991px) {
