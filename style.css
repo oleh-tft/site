@@ -332,12 +332,11 @@ button {
   box-shadow: none;
 }
 
-.form-control {
+.form-control-s {
   border: none;
   border-radius: 0;
 }
-
-.form-control:focus {
+.form-control-s:focus {
   background: #eee8a9;
   box-shadow: none;
 }
@@ -382,10 +381,48 @@ button {
 .card-serv {
   transition: transform 0.1s ease-in, z-index;
 }
-
 .card-serv:hover {
   transform: scale(105%);
   z-index: 100;
+}
+
+.card-item {
+  background-color: #fafffd;
+  box-shadow: none;
+  border-radius: 0 20px 0 20px;
+}
+.card-item img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 20px;
+}
+.card-item .card-text {
+  font-family: "Anuphan", sans-serif;
+  color: #1f6299;
+}
+
+.card-body h5 {
+  font-size: 1rem;
+}
+
+.manuf {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-top-right-radius: 20px;
+  position: absolute;
+  padding: 0.4rem;
+  width: 100%;
+  z-index: 5;
+}
+
+.page-item.active .page-link {
+  background-color: #1f6299;
+  border-color: #1f6299;
+}
+
+.page-link {
+  color: #1f6299;
 }
 
 @media (max-width: 575px) {

@@ -285,13 +285,13 @@ button
 .form-range:focus::-webkit-slider-thumb
   box-shadow: none
 
-.form-control
+.form-control-s
   border: none
   border-radius: 0
 
-.form-control:focus
-  background: $element-color
-  box-shadow: none
+  &:focus
+    background: $element-color
+    box-shadow: none
 
 .fade
   transition: opacity .05s linear
@@ -325,9 +325,42 @@ button
 .card-serv
   transition: transform 0.1s ease-in, z-index
 
-.card-serv:hover
-  transform: scale(105%)
-  z-index: 100
+  &:hover
+    transform: scale(105%)
+    z-index: 100
+
+.card-item
+  background-color: $bg-color
+  box-shadow: none
+  border-radius: 0 20px 0 20px
+
+  img
+    width: 100%
+    height: 300px
+    object-fit: cover
+    border-top-right-radius: 20px
+
+  .card-text
+    font-family: "Anuphan", sans-serif
+    color: $bp-color
+
+.card-body h5
+  font-size: 1rem
+
+.manuf
+  background-color: rgba(0, 0, 0, 0.08)
+  border-top-right-radius: 20px
+  position: absolute
+  padding: 0.4rem
+  width: 100%
+  z-index: 5
+
+.page-item.active .page-link
+  background-color: $bp-color
+  border-color: $bp-color
+
+.page-link
+  color: $bp-color
 
 @media (max-width: 575px)
   .modal
