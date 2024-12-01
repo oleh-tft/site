@@ -14,18 +14,68 @@
         $(function(){
           $("#header").load("header.html"); 
           $("#footer").load("footer.html"); 
+          $("#signup").load("signup.html"); 
         });
     </script> 
 </head>
 <body>
-    <header id="header" class="stick"></header>
+    <header id="header"></header>
+    <div id="signup"></div>
 
     <main id="main-container">
         <div class="container-fluid section justify-content-center d-flex my-5 p-5">
             <h4>Services</h4>
         </div>
         <div class="container my-5">
-            <div class="row justify-content-center">
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                <div class="col-10 col">
+                <div class="card h-100 card-serv">
+                    <img src="assets/interior.png" class="card-img-top align-self-center" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Interior Design</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="cbtn cbtn-contact" href="about.html#list-item-4" role="button">Learn more</a>
+                    </div>
+                </div>
+                </div>
+                <div class="col-10 col">
+                <div class="card h-100 card-serv">
+                    <img src="assets/pick.png" class="card-img-top align-self-center" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Planning</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="cbtn cbtn-contact" href="about.html#list-item-5" role="button">Learn more</a>
+                    </div>
+                </div>
+                </div>
+                <div class="col-10 col">
+                <div class="card h-100 card-serv">
+                    <img src="assets/blueprint.png" class="card-img-top align-self-center" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Architecture</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="cbtn cbtn-contact" href="about.html#list-item-6" role="button">Learn more</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- <div class="row justify-content-center">
                 <div class="col-3 mb-3"></div>
                 <div class="col-6 mb-3">
                     <div id="carouselServices1" class="carousel slide">
@@ -51,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-3"></div>
-            </div>
+            </div> -->
         </div>
     </main>
 

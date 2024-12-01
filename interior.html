@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Ysabeau+SC:wght@1..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script> 
+        $(function(){
+          $("#header").load("header-in.html");
+          $("#footer").load("footer.html");
+        });
+    </script> 
+</head>
+<body>
+    <header id="header"></header>
+
+    <main id="main-container">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-3">
+                    <div class="col-12 bordered-element mb-2 search-pad">
+                        <form role="search">
+                            <input class="form-control me-2 input-search" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                    </div>
+                    <div class="col-12 bordered-element mb-2 d-flex flex-column">
+                        <label for="customRange1" class="form-label"><h5>Price</h5></label>
+                        <input type="range" class="form-range mb-2" min="10" max="5000" step="50" id="customRange1">
+                        <button type="submit" class="cbtn cbtn-contact align-self-end">Apply</button>
+                    </div>
+                    <div class="col-12 bordered-element mb-2">
+                        <h5>Filters</h5>
+                        <div id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Category
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-chair">
+                                        <label class="form-check-label" for="check-chair">
+                                            Chairs
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-table">
+                                        <label class="form-check-label" for="check-table">
+                                            Tables
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-carpet">
+                                        <label class="form-check-label" for="check-carpet">
+                                            Carpets
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-bed">
+                                        <label class="form-check-label" for="check-bed">
+                                            Beds
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-sofa">
+                                        <label class="form-check-label" for="check-sofa">
+                                            Sofas
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    Manufacturer
+                                </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-adirondak">
+                                        <label class="form-check-label" for="check-adirondak">
+                                            Adirondak
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-interia">
+                                        <label class="form-check-label" for="check-interia">
+                                            Interia
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-ligno">
+                                        <label class="form-check-label" for="check-ligno">
+                                            LIGNO
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-skloglas">
+                                        <label class="form-check-label" for="check-skloglas">
+                                            SKLO+GLAS
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-woodsoft">
+                                        <label class="form-check-label" for="check-woodsoft">
+                                            Woodsoft
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-elegant">
+                                        <label class="form-check-label" for="check-elegant">
+                                            Елегант
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-skif">
+                                        <label class="form-check-label" for="check-skif">
+                                            Скіф
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="check-yavoryna">
+                                        <label class="form-check-label" for="check-yavoryna">
+                                            Яворина
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item pb-0">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                    Palette
+                                </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="check-pink">
+                                            <label class="form-check-label check-color" for="check-pink">
+                                                <div class="color color-pink"></div>
+                                                Pink
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="check-purple">
+                                            <label class="form-check-label check-color" for="check-purple">
+                                                <div class="color color-purple"></div>
+                                                Purple
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="check-green">
+                                            <label class="form-check-label check-color" for="check-green">
+                                                <div class="color color-green"></div>
+                                                Green
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="check-blue">
+                                            <label class="form-check-label check-color" for="check-blue">
+                                                <div class="color color-blue"></div>
+                                                Blue
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="check-yellow">
+                                            <label class="form-check-label check-color" for="check-yellow">
+                                                <div class="color color-yellow"></div>
+                                                Yellow
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+                    cards
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer id="footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
