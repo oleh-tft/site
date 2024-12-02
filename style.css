@@ -236,6 +236,10 @@ button {
   border: 1px solid #eee8a9;
 }
 
+.partners {
+  list-style: none;
+}
+
 #btn-contact {
   padding: 1rem;
   border: 1px solid #eee8a9;
