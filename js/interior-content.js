@@ -70,16 +70,42 @@ const items = [
     new Item(2, "assets/example/furn-9.jpg", "Дерев'яний письмовий стіл Rainbow", "245", 1),
     new Item(2, "assets/example/furn-10.jpg", "Дерев'яний пенал Rainbow", "159", 1),
     new Item(6, "assets/example/furn-11.jpg", "М'яке крісло \"Марті\"", "6 174", 0),
-    new Item(6, "assets/example/furn-12.jpg", "М'яке крісло \"Орфей\"", "9765", 0)
+    new Item(6, "assets/example/furn-12.jpg", "М'яке крісло \"Орфей\"", "9 765", 0),
+    new Item(4, "assets/example/furn-13.jpg", "Bari II", "18 200", 0),
+    new Item(4, "assets/example/furn-14.jpg", "Bari", "18 700", 0),
+    new Item(4, "assets/example/furn-15.jpg", "Valencia", "17 900", 0),
+    new Item(4, "assets/example/furn-16.jpg", "Modena", "20 600", 0),
+    new Item(4, "assets/example/furn-17.jpg", "Lima", "19 900", 0),
+    new Item(4, "assets/example/furn-18.jpg", "Elim II single", "17 500", 0),
+    new Item(1, "assets/example/furn-19.jpg", "Joy", "27 837", 0),
+    new Item(1, "assets/example/furn-20.jpg", "Baxter", "32 170", 0),
+    new Item(1, "assets/example/furn-21.jpg", "Venus", "33 438", 0),
+    new Item(1, "assets/example/furn-22.jpg", "Mosaic", "54 741", 0),
+    new Item(1, "assets/example/furn-23.jpg", "Grand Nobel", "46 192", 0),
 ];
 
 let itemsList = document.querySelector("#interior-items");
 let template = document.querySelector("#item-template").innerHTML;
+let page = 0;
 
-for (const item of items) {
-    let html = Mustache.render(template, item);
-    itemsList.insertAdjacentHTML("beforeend", html);
+function updateItems() {
+    for (let i = 0; i < 12; i++) {
+        let id = i + page * 12;
+        if (items[id] === undefined) break;
+        let html = Mustache.render(template, items[id]);
+        itemsList.insertAdjacentHTML("beforeend", html);
+    }
 }
+
+updateItems();
+
+let pageBtn = document.querySelectorAll(".page-switch");
+pageBtn.forEach(btn => btn.addEventListener("click", () => {
+    pageBtn[page].classList.remove("active");
+    page = parseInt(btn.textContent);
+    btn.parentElement.classList.add("active");
+    updateItems();
+}));
 
 /*
 for (const item of items) {
