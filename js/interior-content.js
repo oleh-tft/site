@@ -82,30 +82,60 @@ const items = [
     new Item(1, "assets/example/furn-21.jpg", "Venus", "33 438", 0),
     new Item(1, "assets/example/furn-22.jpg", "Mosaic", "54 741", 0),
     new Item(1, "assets/example/furn-23.jpg", "Grand Nobel", "46 192", 0),
+    new Item(2, "assets/example/furn-24.jpg", "Дерев'яний стіл SPIDER", "939", 1),
+    new Item(2, "assets/example/furn-25.jpg", "Дерев'яний стіл \"Астер\"", "248", 1),
+    new Item(2, "assets/example/furn-26.jpg", "Стелаж-перегородка BLOCK", "513", 1),
+    new Item(2, "assets/example/furn-27.jpg", "Диван HORIZON 3", "1 061", 1)
 ];
 
 let itemsList = document.querySelector("#interior-items");
 let template = document.querySelector("#item-template").innerHTML;
-let page = 0;
+let pageBtn = document.querySelectorAll(".page-switch");
+let pagePrev = document.querySelector(".page-switch-p");
+let pageNext = document.querySelector(".page-switch-n");
+let itemCounter = document.querySelector(".item-counter");
+let page = 1;
+let maxPage = Math.ceil(items.length / 12);
 
-function updateItems() {
+document.addEventListener("DOMContentLoaded", function() {
+    for (let i = 1; i <= pageBtn.length; i++) {
+        let btn = pageBtn[i-1];
+        btn.dataset.page = i;
+        
+        if (i > maxPage)
+            btn.parentElement.classList.add("disabled");
+    }
+});
+
+function updateItems(e) {
+    document.querySelector(".active").classList.remove("active");
+    this.parentElement.classList.add("active");
+    
+    renderItems();
+}
+
+function renderItems() {
+    itemsList.innerHTML = "";
     for (let i = 0; i < 12; i++) {
-        let id = i + page * 12;
+        let id = i + (page - 1) * 12;
         if (items[id] === undefined) break;
         let html = Mustache.render(template, items[id]);
         itemsList.insertAdjacentHTML("beforeend", html);
     }
+    let itemStart = (page - 1) * 12 + 1;
+    let itemEnd = Math.min(page * 12, items.length);
+    itemCounter.textContent = `${itemStart} - ${itemEnd} з ${items.length}`;
 }
 
-updateItems();
+function changePage(newPage) {
+    page = Number(newPage);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-let pageBtn = document.querySelectorAll(".page-switch");
-pageBtn.forEach(btn => btn.addEventListener("click", () => {
-    pageBtn[page].classList.remove("active");
-    page = parseInt(btn.textContent);
-    btn.parentElement.classList.add("active");
-    updateItems();
-}));
+pageBtn.forEach(btn => btn.addEventListener("click", () => changePage(btn.dataset.page)));
+pageBtn.forEach(btn => btn.addEventListener("click", updateItems));
+
+renderItems();
 
 /*
 for (const item of items) {

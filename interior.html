@@ -47,7 +47,7 @@
                 <div class="col-sm-5 col-md-4 col-lg-3">
                     <div class="col-8 col-sm-12 bordered-element mb-2 search-pad">
                         <form role="search">
-                            <input class="form-control form-control-s me-2 input-search" type="search" placeholder="Пошук" aria-label="Search">
+                            <input class="form-control form-control-s me-2 input-search" type="search" placeholder="Пошук" aria-label="Search" id="item-search">
                         </form>
                     </div>
                     <div class="col-8 col-sm-12 bordered-element mb-2 d-flex flex-column">
@@ -210,19 +210,12 @@
                     <div class="row mt-4">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-end align-items-center">
-                                <li class="page-item disabled">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                                </li>
-                                <li class="page-item active"><a class="page-switch page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-switch page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-switch page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                                </li>
+                                <div class="item-counter"></div>
+                                <li class="page-item active"><button class="page-switch page-link">1</button></li>
+                                <li class="page-item"><button class="page-switch page-link" href="">2</button></li>
+                                <li class="page-item"><button class="page-switch page-link" href="">3</button></li>
+                                <li class="page-item"><button class="page-switch page-link" href="">4</button></li>
+                                <li class="page-item"><button class="page-switch page-link" href="">5</button></li>
                             </ul>
                         </nav>
                     </div>
