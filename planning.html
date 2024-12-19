@@ -18,253 +18,78 @@
     </script> 
 </head>
 <body>
+
+    <template id="template-list">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button acc-button-nm {{accCollapsed}}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{id}}" aria-expanded="true" aria-controls="collapse-{{id}}">
+                    {{listName}}
+                </button>
+            </h2>
+            <div id="collapse-{{id}}" class="accordion-collapse collapse {{accShow}}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {{#itemList}}
+                    <div class="row plan-item justify-content-center g-2">
+                        <h2>#{{index}}</h2>
+                        <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
+                            <div class="plan-img">
+                                <img src="{{img}}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
+                            <h3 class="text-truncate">{{name}}</h3>
+                        </div>
+                        <div class="col-5 col-sm-5 col-lg-2 d-flex">
+                            <div class="d-flex align-items-center">
+                                <p class="item-amount-p">Кількість</p>
+                                <input type="number" name="item-amount" id="item-amount" min="0" max="100" value="{{amount}}">
+                            </div>
+                        </div>
+                        <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
+                            <textarea class="form-control" rows="3" placeholder="Коментар">{{comment}}</textarea>
+                        </div>
+                        <div class="col-2 col-sm-1 d-flex justify-content-end">
+                            <button type="button" class="btn-close btn-delete-item" aria-label="Delete"></button>
+                        </div>
+                    </div>
+                    <hr>
+                    {{/itemList}}
+                    <div class="btn-delete-plan d-flex justify-content-end mt-4"><button type="button" class="btn btn-outline-danger">Вилучити список</button></div>
+                </div>
+            </div>
+        </div>
+    </template>
+
     <header id="header"></header>
 
+    <!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
+    <div id="deleteModal" class="modal fade" tabindex="-1" >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex align-items-center flex-column">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">Вилучити список?</h1>
+                    <div class="delete-wrap d-flex justify-content-between mt-3">
+                        <button type="button" class="btn-delete delete-yes btn btn-outline-success">Підтвердити</button>
+                        <button type="button" class="btn-delete delete-no btn btn-outline-danger">Скасувати</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main id="main-container">
-        <div class="container py-5">
+        <div class="container py-5" id="container-lists">
             <div class="accordion accordion-flush acc-plan" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button acc-button-nm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Список #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#1</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-1.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Prostir</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар">Приклад коментаря</textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#2</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-4.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Circle</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="4">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар">Дуже потрібно!</textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#3</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-3.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Delta</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар">Приклад коментаря</textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#4</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-6.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Console</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар">Щось цікаве???</textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button acc-button-nm collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Список #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#1</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-7.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Підліткова шафа Rainbow 3-дверна</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="2">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар"></textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#2</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-8.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Дерев'яний комод Rainbow</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар"></textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#3</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-9.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Дерев'яний письмовий стіл Rainbow</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар"></textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#4</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-10.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">Дерев'яний пенал Rainbow</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="4">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар"></textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row plan-item justify-content-center g-2">
-                                <h2>#5</h2>
-                                <div class="col-6 col-sm-4 col-lg-2 d-flex justify-content-center">
-                                    <div class="plan-img">
-                                        <img src="assets/example/furn-11.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-7 col-sm-8 col-lg-4 d-flex align-items-center">
-                                    <h3 class="text-truncate">М'яке крісло "Марті"</h3>
-                                </div>
-                                <div class="col-5 col-sm-5 col-lg-2 d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <p>Кількість</p>
-                                        <input type="number" name="item-amount" id="item-amount" min="0" max="999" value="38">
-                                    </div>
-                                </div>
-                                <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                                    <textarea class="form-control" rows="3" placeholder="Коментар">38.</textarea>
-                                </div>
-                                <div class="col-2 col-sm-1 d-flex justify-content-end">
-                                    <button type="button" class="btn-close" aria-label="Delete"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </main>
     
     <footer id="footer"></footer>
 
+    <script src="js/mustache.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/planning.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
