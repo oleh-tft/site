@@ -42,7 +42,7 @@
                         <div class="col-5 col-sm-5 col-lg-2 d-flex">
                             <div class="d-flex align-items-center">
                                 <p class="item-amount-p">Кількість</p>
-                                <input type="number" name="item-amount" id="item-amount" min="0" max="100" value="{{amount}}">
+                                <input type="number" name="item-amount" id="item-{{id}}-{{index}}-amount" min="0" max="100" value="{{amount}}">
                             </div>
                         </div>
                         <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
@@ -54,7 +54,7 @@
                     </div>
                     <hr>
                     {{/itemList}}
-                    <div class="btn-delete-plan d-flex justify-content-end mt-4"><button type="button" class="btn btn-outline-danger">Вилучити список</button></div>
+                    <div class="btn-delete-plan d-flex justify-content-end mt-4"><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Вилучити список</button></div>
                 </div>
             </div>
         </div>
@@ -62,15 +62,14 @@
 
     <header id="header"></header>
 
-    <!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
-    <div id="deleteModal" class="modal fade" tabindex="-1" >
+    <div id="deleteModal" class="modal fade" tabindex="-1" aria-label="deletePlan">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body d-flex align-items-center flex-column">
                     <h1 class="modal-title fs-4" id="exampleModalLabel">Вилучити список?</h1>
                     <div class="delete-wrap d-flex justify-content-between mt-3">
-                        <button type="button" class="btn-delete delete-yes btn btn-outline-success">Підтвердити</button>
-                        <button type="button" class="btn-delete delete-no btn btn-outline-danger">Скасувати</button>
+                        <button type="button" class="btn-delete delete-yes btn btn-outline-success" data-bs-dismiss="modal">Підтвердити</button>
+                        <button type="button" class="btn-delete delete-no btn btn-outline-danger" data-bs-dismiss="modal">Скасувати</button>
                     </div>
                 </div>
             </div>

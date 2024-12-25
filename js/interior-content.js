@@ -3,11 +3,10 @@ const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill
 let itemsList = document.querySelector("#interior-items");
 let template = document.querySelector("#item-template").innerHTML;
 let pageBtn = document.querySelectorAll(".page-switch");
-let pagePrev = document.querySelector(".page-switch-p");
-let pageNext = document.querySelector(".page-switch-n");
 let itemCounter = document.querySelector(".item-counter");
 let page = 1;
 let maxPage = Math.ceil(items.length / 12);
+let localPage = [];
 
 document.addEventListener("DOMContentLoaded", function() {
     for (let i = 1; i <= pageBtn.length; i++) {
@@ -24,6 +23,12 @@ function updateItems(e) {
     this.parentElement.classList.add("active");
     
     renderItems();
+}
+
+function setLocalItems() {
+    for (let i = 0; i < 12; i++) {
+        localPage[i] = items[i];
+    }
 }
 
 function renderItems() {
@@ -48,60 +53,3 @@ pageBtn.forEach(btn => btn.addEventListener("click", () => changePage(btn.datase
 pageBtn.forEach(btn => btn.addEventListener("click", updateItems));
 
 renderItems();
-
-/*
-for (const item of items) {
-    let manuf = manufacturers[item.manufacturer];
-
-    let mainCol = document.createElement("div");
-    mainCol.classList.add("col");
-
-    let cardItem = document.createElement("div");
-    cardItem.classList.add("card", "card-item");
-
-    let manufDiv = document.createElement("div");
-    manufDiv.classList.add("manuf");
-
-    let manufLink = document.createElement("a");
-    manufLink.classList.add("link-secondary");
-    manufLink.setAttribute("href", manuf.link);
-    manufLink.textContent = manuf.name;
-    manufDiv.append(manufLink);
-
-    let itemImg = document.createElement("img");
-    itemImg.classList.add("card-img-top");
-    itemImg.setAttribute("src", item.img);
-
-    let itemDiv = document.createElement("div");
-    itemDiv.classList.add("card-body", "d-flex", "justify-content-between", "align-items-center");
-
-    let itemInfo = document.createElement("div");
-    itemInfo.classList.add("item-info");
-
-    let itemTitle = document.createElement("h5");
-    itemTitle.classList.add("card-title");
-    itemTitle.textContent = item.title;
-
-    let itemPrice = document.createElement("p");
-    itemPrice.classList.add("card-text");
-    itemPrice.textContent = `${item.price} ${currency[item.currency]}`;
-    itemInfo.append(itemTitle);
-    itemInfo.append(itemPrice);
-
-    let btnAdd = document.createElement("button");
-    btnAdd.classList.add("btn-add");
-    btnAdd.setAttribute("type", "button");
-    btnAdd.setAttribute("title", "Додати до списку планування");
-    btnAdd.innerHTML = svg;
-
-    itemDiv.append(itemInfo);
-    itemDiv.append(btnAdd);
-
-    cardItem.append(manufDiv);
-    cardItem.append(itemImg);
-    cardItem.append(itemDiv);
-
-    mainCol.append(cardItem);
-    itemsList.append(mainCol);
-}
-*/

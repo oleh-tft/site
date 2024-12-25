@@ -1,10 +1,50 @@
+const currency = [
+    "грн",
+    "$"
+];
+
+const manufacturers = [
+    {
+        name: "Adirondak",
+        link: "https://adirondak.com.ua/"
+    },
+    {
+        name: "Interia",
+        link: "https://interia.com.ua/"
+    },
+    {
+        name: "LIGNO",
+        link: "https://ligno.com.ua/"
+    },
+    {
+        name: "SKLO+GLAS",
+        link: "http://glascom.com.ua/"
+    },
+    {
+        name: "Woodsoft",
+        link: "https://woodsoft.ua/"
+    },
+    {
+        name: "Елегант",
+        link: "https://www.mebli-elegant.com.ua/"
+    },
+    {
+        name: "Скіф",
+        link: "https://mebliskif.com.ua/"
+    },
+    {
+        name: "Яворина",
+        link: "https://yavorina.com.ua/"
+    }
+];
+
 class Item {
     constructor(manufacturerId, img, title, price, currencyId) {
         this.manufacturer = manufacturerId;
         this.img = img;
         this.title = title;
         this.price = price;
-        this.currency = currencyId;
+        this.currency = currency[currencyId];
     }
 
     get manufacturerLink() {
@@ -50,9 +90,7 @@ class PlanList {
     }
 
     remove(itemId) {
-        for (let i = 0; i < this.itemList.length; i++) {
-
-        }
+        this.itemList.splice(itemId, 1);
     }
 }
 
@@ -86,47 +124,7 @@ const items = [
     new Item(2, "assets/example/furn-27.jpg", "Диван HORIZON 3", "1 061", 1)
 ];
 
-const manufacturers = [
-    {
-        name: "Adirondak",
-        link: "https://adirondak.com.ua/"
-    },
-    {
-        name: "Interia",
-        link: "https://interia.com.ua/"
-    },
-    {
-        name: "LIGNO",
-        link: "https://ligno.com.ua/"
-    },
-    {
-        name: "SKLO+GLAS",
-        link: "http://glascom.com.ua/"
-    },
-    {
-        name: "Woodsoft",
-        link: "https://woodsoft.ua/"
-    },
-    {
-        name: "Елегант",
-        link: "https://www.mebli-elegant.com.ua/"
-    },
-    {
-        name: "Скіф",
-        link: "https://mebliskif.com.ua/"
-    },
-    {
-        name: "Яворина",
-        link: "https://yavorina.com.ua/"
-    }
-];
-
-const currency = [
-    "грн",
-    "$"
-];
-
-const plans = [
+let plans = [
     new PlanList("Список #1",
         [
             new PlanItem(0, 1),
