@@ -1,24 +1,30 @@
 let container = document.querySelector(".acc-plan");
 let templateList = document.querySelector("#template-list").innerHTML;
-let current = 0;
+let current = -1;
+let localPlans = [];
+let parsedJson = JSON.parse(sessionStorage.plansSaved);
+for (let i = 0; i < parsedJson.length; i++) {
+    localPlans[i] = new PlanList(parsedJson[i].listName, parsedJson[i].itemList);
+}
 
 function renderLists() {
     container.innerHTML = "";
-    for (let i = 0; i < plans.length; i++) {
+    for (let i = 0; i < localPlans.length; i++) {
         let html = Mustache.render(templateList, {
             id: i,
             accCollapsed: i != current ? "collapsed" : "",
             accShow: i == current ? "show" : "",
-            listName: plans[i].listName,
-            itemList: plans[i].itemList,
+            listName: localPlans[i].listName,
+            itemList: localPlans[i].itemList,
             index: function () {
-                return plans[i].itemList.indexOf(this) + 1;
+                return localPlans[i].itemList.indexOf(this) + 1;
             }
         });
         container.insertAdjacentHTML("beforeend", html);
     }
     addAccordion();
     addDeleteButtons();
+    addRenameButtons();
 }
 
 function addAccordion() {
@@ -26,7 +32,11 @@ function addAccordion() {
 
     for (let i = 0; i < btnAccordion.length; i++) {
         btnAccordion[i].addEventListener("click", () => {
-            current = i;
+            if (!btnAccordion[i].classList.contains("collapsed")) {
+                current = i;
+            } else {
+                current = -1;
+            }
         });
     }
 }
@@ -36,18 +46,51 @@ function addDeleteButtons() {
         let items = container.children[i].querySelectorAll(".plan-item");
         for (let j = 0; j < items.length; j++) {
             items[j].querySelector(".btn-delete-item").addEventListener("click", function() {
-                plans[i].remove(j);
+                localPlans[i].remove(j);
+                sessionStorage.plansSaved = JSON.stringify(localPlans);
                 renderLists();
             });
         }
     }
 }
 
+function addRenameButtons() {
+    $(".btn-rename").click(function() {
+        let index = $(".btn-rename").index(this);
+        let newName = $(`#rename-${index}`).val().trim();
+        if (newName !== "") {
+            localPlans[index].listName = newName;
+            sessionStorage.plansSaved = JSON.stringify(localPlans);
+            renderLists();
+        }
+    });
+}
+
+function saveText() {
+    $("[name=item-amount]").change(function(e) {
+        localPlans[current].itemList[Number($(this).data("iter"))-1].amount = $(this).val();
+        sessionStorage.plansSaved = JSON.stringify(localPlans);
+    });
+    $(".custom-comment").change(function(e) {
+        localPlans[current].itemList[Number($(this).data("iter"))-1].comment = $(this).val();
+        sessionStorage.plansSaved = JSON.stringify(localPlans);
+    });
+}
+
 renderLists();
 
 $(document).ready(function () {
     $(".delete-yes").click(function() {
-        plans.splice(current, 1);
+        localPlans.splice(current, 1);
+        sessionStorage.plansSaved = JSON.stringify(localPlans);
         renderLists();
     });
+
+    $(".btn-new-plan").click(function() {
+        localPlans.push(new PlanList(`Список #${localPlans.length+1}`, []));
+        sessionStorage.plansSaved = JSON.stringify(localPlans);
+        renderLists();
+    });
+
+    saveText();
 });

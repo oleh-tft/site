@@ -17,6 +17,11 @@
           $("#signup").load("signup.html"); 
         });
     </script>
+    <script src="js/data.js"></script>
+    <script>
+        sessionStorage.plansSaved = JSON.stringify(plansPlaceholder);
+        console.log(sessionStorage.plansSaved);
+    </script>
 </head>
 <body>
     <header id="header"></header>

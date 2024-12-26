@@ -42,11 +42,11 @@
                         <div class="col-5 col-sm-5 col-lg-2 d-flex">
                             <div class="d-flex align-items-center">
                                 <p class="item-amount-p">Кількість</p>
-                                <input type="number" name="item-amount" id="item-{{id}}-{{index}}-amount" min="0" max="100" value="{{amount}}">
+                                <input type="number" data-iter="{{index}}" name="item-amount" id="item-{{id}}-{{index}}-amount" min="0" max="100" value="{{amount}}">
                             </div>
                         </div>
                         <div class="col-10 col-sm-6 col-lg-3 d-flex align-items-center">
-                            <textarea class="form-control" rows="3" placeholder="Коментар">{{comment}}</textarea>
+                            <textarea class="form-control custom-comment" rows="3" placeholder="Коментар" data-iter="{{index}}">{{comment}}</textarea>
                         </div>
                         <div class="col-2 col-sm-1 d-flex justify-content-end">
                             <button type="button" class="btn-close btn-delete-item" aria-label="Delete"></button>
@@ -54,7 +54,21 @@
                     </div>
                     <hr>
                     {{/itemList}}
-                    <div class="btn-delete-plan d-flex justify-content-end mt-4"><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Вилучити список</button></div>
+                    <div class="row btn-delete-plan mt-4 align-items-center g-2">
+                        <div class="col-6 col-sm-5 col-lg-2">
+                            <label for="rename-{{id}}" class="form-label d-block">Змінити назву списку</label>
+                        </div>
+                        <div class="col-6 col-sm-7 col-lg-4">
+                            <input type="text" name="rename-{{id}}" id="rename-{{id}}" class="form-control" placeholder="{{listName}}">
+                        </div>
+                        <div class="col-4 col-sm-3 col-lg-2">
+                            <button type="button" class="btn-rename btn btn-outline-secondary">Зберегти</button>
+                        </div>
+                        <div class="col"></div>
+                        <div class="col-6 col-sm-5 col-md-3 d-flex justify-content-end">
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Вилучити список</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,7 +83,7 @@
                     <h1 class="modal-title fs-4" id="exampleModalLabel">Вилучити список?</h1>
                     <div class="delete-wrap d-flex justify-content-between mt-3">
                         <button type="button" class="btn-delete delete-yes btn btn-outline-success" data-bs-dismiss="modal">Підтвердити</button>
-                        <button type="button" class="btn-delete delete-no btn btn-outline-danger" data-bs-dismiss="modal">Скасувати</button>
+                        <button type="button" class="btn-delete delete-no btn btn-outline-secondary" data-bs-dismiss="modal">Скасувати</button>
                     </div>
                 </div>
             </div>
@@ -78,9 +92,8 @@
 
     <main id="main-container">
         <div class="container py-5" id="container-lists">
-            <div class="accordion accordion-flush acc-plan" id="accordionExample">
-                
-            </div>
+            <div class="accordion accordion-flush acc-plan" id="accordionExample"></div>
+            <button type="button" class="btn-new-plan mt-3 cbtn cbtn-contact">Створити новий список</button>
         </div>
     </main>
     

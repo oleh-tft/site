@@ -21,15 +21,14 @@
     <template id="item-template">
         <div class="col">
             <div class="card card-item">
-                <div class="manuf"><a class="link-secondary" href="{{manufacturerLink}}">{{manufacturerName}}</a></div>
-                <img src="{{img}}" class="card-img-top" alt="...">
+                <div class="manuf"><a class="link-secondary" href="{{item.manufacturerLink}}">{{item.manufacturerName}}</a></div>
+                <img src="{{item.img}}" class="card-img-top" alt="...">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="item-info">
-                        <h5 class="card-title">{{title}}</h5>
-                        <p class="card-text">{{price}} {{currency}}</p>
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.price}} {{item.currency}}</p>
                     </div>
-                    <!-- title="Додати до списку планування" -->
-                    <button type="button" class="btn-add" data-bs-toggle="tooltip" data-bs-custom-class="add-tooltip" data-bs-title="Додати до списку планування"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
+                    <button type="button" class="btn-add" data-global="{{index}}" data-bs-toggle="modal" data-bs-target="#addModal"><svg data-bs-toggle="tooltip" data-bs-custom-class="add-tooltip" data-bs-title="Додати до списку планування" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7"/>
                         <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
                         <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
@@ -40,7 +39,42 @@
         </div>
     </template>
 
+    <template id="filter-category">
+        <div class="form-check">
+            <input class="form-check-input check-filter" type="checkbox" value="" id="check-{{id}}">
+            <label class="form-check-label" for="check-{{id}}">
+                {{name}}
+            </label>
+        </div>
+    </template>
+
+    <template id="filter-color">
+        <div class="form-check">
+            <input class="form-check-input check-filter" type="checkbox" value="" id="check-{{id}}">
+            <label class="form-check-label check-color" for="check-{{id}}">
+                <div class="color color-{{id}}"></div>
+                {{name}}
+            </label>
+        </div>
+    </template>
+
     <header id="header"></header>
+
+    <div id="addModal" class="modal fade" tabindex="-1" aria-label="addToPlan">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex align-items-center flex-column">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">Обрати список:</h1>
+                    <select class="form-control" name="selectPlan" id="selectPlan">
+                    </select>
+                    <div class="delete-wrap d-flex justify-content-between mt-3">
+                        <button type="button" class="btn-delete add-yes btn btn-outline-success" data-bs-dismiss="modal">Підтвердити</button>
+                        <button type="button" class="btn-delete add-no btn btn-outline-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main id="main-container">
         <div class="container py-5">
@@ -61,42 +95,11 @@
                         <div id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Категорія
-                                    </button>
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Категорія
+                                </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-chair">
-                                        <label class="form-check-label" for="check-chair">
-                                            Стільці
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-table">
-                                        <label class="form-check-label" for="check-table">
-                                            Столи
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-carpet">
-                                        <label class="form-check-label" for="check-carpet">
-                                            Килими
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-bed">
-                                        <label class="form-check-label" for="check-bed">
-                                            Ліжка
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-sofa">
-                                        <label class="form-check-label" for="check-sofa">
-                                            Дивани
-                                        </label>
-                                    </div>
-                                </div>
+                                <div id="flush-collapseOne" class="collapse" data-bs-parent="#accordionFlushExample"></div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -104,56 +107,7 @@
                                     Виробник
                                 </button>
                                 </h2>
-                                <div id="flush-collapseTwo" class="collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-adirondak">
-                                        <label class="form-check-label" for="check-adirondak">
-                                            Adirondak
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-interia">
-                                        <label class="form-check-label" for="check-interia">
-                                            Interia
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-ligno">
-                                        <label class="form-check-label" for="check-ligno">
-                                            LIGNO
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-skloglas">
-                                        <label class="form-check-label" for="check-skloglas">
-                                            SKLO+GLAS
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-woodsoft">
-                                        <label class="form-check-label" for="check-woodsoft">
-                                            Woodsoft
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-elegant">
-                                        <label class="form-check-label" for="check-elegant">
-                                            Елегант
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-skif">
-                                        <label class="form-check-label" for="check-skif">
-                                            Скіф
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="check-yavoryna">
-                                        <label class="form-check-label" for="check-yavoryna">
-                                            Яворина
-                                        </label>
-                                    </div>
-                                </div>
+                                <div id="flush-collapseTwo" class="collapse" data-bs-parent="#accordionFlushExample"></div>
                             </div>
                             <div class="accordion-item pb-0">
                                 <h2 class="accordion-header">
@@ -161,53 +115,14 @@
                                     Колір
                                 </button>
                                 </h2>
-                                <div id="flush-collapseThree" class="collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="check-pink">
-                                            <label class="form-check-label check-color" for="check-pink">
-                                                <div class="color color-pink"></div>
-                                                Рожевий
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="check-purple">
-                                            <label class="form-check-label check-color" for="check-purple">
-                                                <div class="color color-purple"></div>
-                                                Фіолетовий
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="check-green">
-                                            <label class="form-check-label check-color" for="check-green">
-                                                <div class="color color-green"></div>
-                                                Зелений
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="check-blue">
-                                            <label class="form-check-label check-color" for="check-blue">
-                                                <div class="color color-blue"></div>
-                                                Синій
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="check-yellow">
-                                            <label class="form-check-label check-color" for="check-yellow">
-                                                <div class="color color-yellow"></div>
-                                                Жовтий
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="flush-collapseThree" class="collapse" data-bs-parent="#accordionFlushExample"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-7 col-md-8 col-lg-9">
-                    <div id="interior-items" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-
-                    </div>
+                    <div class="row no-items align-items-center justify-content-center w-100 h-100 d-none"><h2 class="text-center">Товарів не знайдено. Спробуйте змінити фільтр</h2></div>
+                    <div id="interior-items" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center"></div>
                     <div class="row mt-4">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-end align-items-center">
